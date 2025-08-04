@@ -29,7 +29,6 @@ class BasePage:
     def click_button(self, **kwargs):
         try:
             button = self.window.child_window(**kwargs)
-            # button.wait('ready', timeout=10)
             button.invoke()
             logging.info(f"Button  clicked successfully")
             return True

@@ -1,5 +1,7 @@
+import time
 from conftest import installer_app
-from page_objects.installer.base_page import BasePage
+from utils.browser_checker import  ProcessChecker
+from conftest import chrome_browser, firefox_browser
 from page_objects.installer.installer_window import InstallerWindow
 from page_objects.installer.locators import InstallerLocators
 
@@ -13,8 +15,17 @@ def test_visible_installer_window(installer_app):
     assert installer_window.get_licensing_agreement_link().exists(), "Licensing agreement link is not visible"
     assert installer_window.get_installer_language_dropdown().exists(), "Language dropdown is not visible"
 
-
 def test_click_licensing_agreement(installer_app):
     installer_window = InstallerWindow(installer_app)
 
     assert installer_window.click_licensing_agreement(), "Failed to click Licensing Agreement link"
+
+def test_start_browser(firefox_browser):
+    # chrome = chrome_browser
+    firefox = firefox_browser
+    process_check = ProcessChecker()
+
+    assert process_check.check_is_firefox_running() is True, "firefox off"
+    # assert process_check.check_is_chrome_running() is True, "chrome off"
+    # chrome_browser.get("chrome://version")
+    time.sleep(5)

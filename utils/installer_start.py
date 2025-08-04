@@ -1,6 +1,4 @@
 import logging
-import time
-
 from pywinauto.application import Application
 
 def start_installer(exe_path):
@@ -10,4 +8,6 @@ def start_installer(exe_path):
     except Exception as e:
         logging.error(f"Failed to start installer: {e}")
         return None
+
+
 

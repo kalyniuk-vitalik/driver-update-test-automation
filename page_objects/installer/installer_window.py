@@ -25,6 +25,3 @@ class InstallerWindow(BasePage):
 
     def click_licensing_agreement(self):
         return self.click_button(**InstallerLocators.LICENSING_AGREEMENT_LINK)
-
-
-

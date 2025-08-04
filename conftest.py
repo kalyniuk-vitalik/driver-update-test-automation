@@ -1,6 +1,13 @@
 import time
+from email.utils import decode_rfc2231
+
 import pytest
+import os
 from utils.installer_start import start_installer
+from selenium import webdriver
+from selenium.webdriver.chrome.options import Options
+from selenium.webdriver.chrome.service import Service
+
 
 @pytest.fixture
 def installer_app():
@@ -14,7 +21,25 @@ def installer_app():
          except:
              pass
 
+@pytest.fixture
+def chrome_browser():
+    chrome_options = Options()
+    debug_profile = "debug profile path"
+    chrome_options.add_argument("--remote-debugging-port=9222")
+    chrome_options.add_argument(f"--user-data-dir={debug_profile}")
+    chrome_options.add_argument("--no-first-run")
+    chrome_options.add_argument("--disable-sync")
+    chrome_options.add_argument("--incognito")
 
+    driver = webdriver.Chrome(options=chrome_options)
+    yield driver
+    driver.quit()
 
+@pytest.fixture
+def firefox_browser():
+    firefox_options = webdriver.FirefoxOptions()
+    firefox_options.add_argument("--private")
 
-
+    driver = webdriver.Firefox(options=firefox_options)
+    yield driver
+    driver.quit()
