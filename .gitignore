@@ -5,17 +5,22 @@ __pycache__/
 # IDE
 .idea/
 .vscode/
+/tests/debug profile path/
+/trying_some_code.py
 
 # Python
 *.pyc
 __pycache__/
 *.pyo
 *.pyd
+*.pyc
+*.log
 
 # Virtual environments
 .venv/
 env/
 venv/
+/.venv/
 
 # Logs
 *.log
