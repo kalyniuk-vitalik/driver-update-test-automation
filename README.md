@@ -1,6 +1,6 @@
-# 🚀 Driver Updater Automation Testing Framework
+# System Helper Automation Testing Framework
 
-A Python-based automation testing framework for Driver Updater.  
+A Python-based automation testing framework for System Helper.  
 This project uses **pytest** and **pywinauto** for UI automation, structured with the **Page Object Model (POM)** to ensure maintainability, scalability, and reliability.  
 Utility modules extend functionality with process management, log analysis, signature verification, and browser handling.
 
