@@ -20,7 +20,7 @@ def verify_desktop_to_web_flow(redirect, custom_value, lang_of_url):
             for i, line in enumerate(f, 1):
                 if f"redirect-to. name={redirect}" in line:
                     for j, line2 in enumerate(f, start=i+1):
-                        if f"execute. what=\"https://paygw.adaware.com/redirect/custom/pch-driver-updater?customValue={custom_value}&lang={lang_of_url}\"" in line2:
+                        if f'execute. what="{CHECKOUT_URL_TEMPLATE.format(custom_value=custom_value, lang=lang_of_url)}"':
                             return True
             return False
     except (OSError, IOError) as e:
